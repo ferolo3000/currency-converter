@@ -8,7 +8,7 @@ library.add(fab);
 function Footer() {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="page-footer font-small bg-primary text-white">
+    <footer className="footer text-white">
     <div className="footer-copyright text-center py-3">
       <div className="text-center">
       <FontAwesomeIcon icon={['fab', 'github']} size="2x" />

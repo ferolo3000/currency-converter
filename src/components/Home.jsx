@@ -57,10 +57,11 @@ export default class Converter extends Component {
 
     render() {
         return (
-        <div className="container">
-            <div className="converter">
-                <div className="row content-input">
-                    <div className="inpunt-currency">
+            <div>
+        <div className="container-content">
+            <div className="converter col-lg-12">
+                <div className="row align-items-center content-input">
+                    <div className="col-xs-5 col-md-5 inpunt-currency">
                         <p className="title">FROM</p>
                         <select
                         className="btn-from"
@@ -72,8 +73,10 @@ export default class Converter extends Component {
                         ))}
                         </select>
                     </div>
-                    <button className="swtich">&#171; &#187;</button>
-                    <div className="output-currency">              
+                    <div className="col-xs-2 col-md-2">
+                        <button className="swtich">&#171; &#187;</button>
+                    </div>
+                    <div className="col-xs-5 col-md-5 output-currency">              
                         <p className="title">TO</p>                   
                         <select
                         className="btn-from"
@@ -86,10 +89,12 @@ export default class Converter extends Component {
                         </select>
                     </div>
                 </div>
-                <div className="row content-result">
-                    <div className="input-value">
+
+                <div className="row align-items-center content-result">
+                    <div className="col-xs-6 col-md-6 input-value">
                         <p className="title">AMOUNT</p>
                         <input
+                        className="input-amount"
                         name="amount"
                         type="text"
                         value={this.state.amount}
@@ -98,19 +103,27 @@ export default class Converter extends Component {
                         }>
                         </input>
                     </div>
-                    <div className="output-value">
+                    <div className="col-xs-6 col-md-6 output-value">
                         <p className="title">RESULT</p>
-                        <p className="content-output">1.025</p>
+                        <p className="output-content">1.025</p>
                         {this.state.result && 
                             <h3>{this.state.result}</h3>
                             }
                     </div>
-
-                </div>       
-                <button onClick={this.convertHandler}>Convert</button>           
+                </div>                 
             </div>
         </div>
+        <div>
+                <h1>text here</h1>
+                <h1>text here</h1>
+                <h1>text here</h1>
+                <h1>text here</h1>
+                <h1>text here</h1>
+                <h1>text here</h1>
+                <h1>text here</h1>
+            </div>
+            </div>
         );
     }
 }
-//export default Converter;
+//export default Converter // <button className="btn-convert"onClick={this.convertHandler}>Get</button>;
