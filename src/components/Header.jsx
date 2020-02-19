@@ -11,14 +11,9 @@ const NotFound = () => {
 function Header() {
     return(
         <Router>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link className="navbar-brand" to="/">NAME</Link>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-            <Link to="/about/">About</Link>
-            </div>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+            <Link className="navbar-brand" to="/">CONVERTIR</Link>
+            <Link to="/about/" className="text-white">About</Link>
         </nav>
         <Switch>
         <Route path="/" exact component={Home} />

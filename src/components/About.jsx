@@ -1,9 +1,11 @@
 import React from "react";
 
+import './styles.css';
+
 function About() {
     return (
         <div>
-            <p>
+            <p className="content">
                 asdfasdf asdfasdf lkjlkjlkj asdfasdflkjlkj asdflkjlkjasdf asdfkljlkj
             </p>
         </div>
