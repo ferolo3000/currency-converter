@@ -1,31 +1,26 @@
-@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 html{
     position:relative; 
-    min-height: 100%;
   }
 
 body {
     background: #43C6AC;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #191654, #43C6AC);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #191654, #43C6AC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin:0;
     padding:0;
+    text-align: center;
 }
+
+/* navbar */
 
 .navbar {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
-.container-content {
-    width: 60%;
-    margin: auto;
-    padding: 50px;
-    background-color: #f4f3f3;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-}
-
+/* buttons */
 .btn-from {
     border-radius: 12px;
     padding: 10px 24px;
@@ -35,9 +30,25 @@ body {
 }
 
 .btn-convert {
-    background-color: #ffcc00;
     border-radius: 12px;
     padding: 7px 18px;
+    background-color: #40BAA6;
+    color: #fff;
+}
+
+.swtich {
+    font-size: 30px;
+    border: none;
+    background: none;
+}
+
+/* converter content */
+.container-content {
+    width: 40%;
+    margin: auto;
+    padding: 20px;
+    background-color: #f4f3f3;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 .title {
@@ -46,18 +57,11 @@ body {
     margin: 1px;
 }
 
-.swtich {
-    font-size: 30px;
-    border: none;
-    background: none;
-
-}
-
 .input-amount {
     border-radius: 12px;
     padding: 10px 24px;
     font-size: 16px;
-    width: auto;
+    width: 150px;
     margin: 10px;
 }
 
@@ -70,23 +74,27 @@ body {
     margin: 10px;
 }
 
-.footer {
-    position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
-  text-align: center;
-    background-color: #000428;
-    color: white;
+.result {
+    color:#40BAA6;
+}
 
+/* footer */
+
+  @media only screen and (max-width: 480px) {
+    .container-content {
+        width: 90%;  
+    }
   }
 
-
-  @media only screen and (max-width: 470px) {
+  @media only screen and (max-width: 768px) {
     .container-content {
         width: 80%;  
-        height: 70%; 
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .container-content {
+        width: 70%;  
     }
   }
 

@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 
+import "./styles.css"
+
 class Converter extends React.Component {
   constructor(props) {
     super(props);
@@ -54,7 +56,10 @@ selectHandler = (event) => {
 }
 
 render() {
-  return <div>
+  return ( 
+  <div className="container-content">
+    <div className="row">
+        <div className="col-md-5 col-sm-12">
             <p className="title">FROM</p>
             <select
                 className="btn-from"
@@ -65,6 +70,11 @@ render() {
                     <option key={currency}>{currency}</option>
                 ))}
             </select>
+        </div>
+        <div className="col-md-2 col-sm-12">
+            <button>xx</button>
+        </div>
+        <div className="col-md-5 col-sm-12">            
             <p className="title">TO</p>                   
             <select
                 className="btn-from"
@@ -75,6 +85,10 @@ render() {
                     <option key={currency}>{currency}</option>
                 ))}
             </select>
+        </div>
+    </div>
+    <div className="row"> 
+        <div className="col-md-8 col-sm-8">
             <p className="title">AMOUNT</p>
             <input
                 className="input-amount"
@@ -85,12 +99,19 @@ render() {
                     this.setState({ amount: event.target.value })
                 }>
             </input>
-            <p className="title">RESULT</p>
-                {this.state.result && 
-                    <h3>{this.state.result}</h3>
-                    }
-            <button className="btn-convert"onClick={this.convertHandler}>Get</button>    
         </div>
+        <div className="col-md-4 col-sm-4">
+                <button className="btn-convert"onClick={this.convertHandler}>Get</button>
+        </div>
+    </div>
+    <div>
+        {this.state.result && 
+            <p className="result"><span style={{fontSize: "20px"}}>{this.state.amount} {this.state.fromCurrency} =</span><br/>
+                <span style={{fontSize: "40px"}}>{this.state.result}</span> <span style={{fontSize: "20px"}}>{this.state.toCurrency}</span></p>
+            }
+    </div>        
+        </div>
+     )   
     }
 }
 

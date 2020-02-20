@@ -11,8 +11,8 @@ const NotFound = () => {
 function Header() {
     return(
         <Router>
-        <nav className="navbar navbar-expand-lg navbar-light bg-grey">
-            <Link className="navbar-brand" to="/">CONVERTIR</Link>
+        <nav className="navbar navbar-expand-lg">
+            <Link className="navbar-brand" to="/"><span style={{color: "#40BAA6"}}>CONVERTIR</span></Link>
             <Link to="/stats/" className="text-white">Statistics</Link>
         </nav>
         <Switch>
