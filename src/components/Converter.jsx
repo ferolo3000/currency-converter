@@ -12,6 +12,7 @@ class Converter extends React.Component {
             toCurrency: "EUR",
             amount: 1,
             currencies: [],
+            date:"",
         }
   };
 
@@ -23,6 +24,7 @@ class Converter extends React.Component {
         initCurrency.push(key)
       }
       this.setState({currencies: initCurrency.sort()})
+      this.setState({date: response.data.date})
     })
 
     .catch(err => {
@@ -71,13 +73,13 @@ render() {
                 ))}
             </select>
         </div>
-        <div className="col-md-2 col-sm-12">
-            <button>xx</button>
+        <div className="col-md-2 col-sm-12 switch">
+            <button className="switch-btn">&#8249; &#8250;</button>
         </div>
         <div className="col-md-5 col-sm-12">            
             <p className="title">TO</p>                   
             <select
-                className="btn-from"
+                className="btn-to"
                 name="to"
                 onChange={(event) => this.selectHandler(event)}
                 value={this.state.toCurrency}>
@@ -88,7 +90,7 @@ render() {
         </div>
     </div>
     <div className="row"> 
-        <div className="col-md-8 col-sm-8">
+        <div className="col-md-5 col-sm-6">
             <p className="title">AMOUNT</p>
             <input
                 className="input-amount"
@@ -100,8 +102,10 @@ render() {
                 }>
             </input>
         </div>
-        <div className="col-md-4 col-sm-4">
-                <button className="btn-convert"onClick={this.convertHandler}>Get</button>
+        <div className="col-md-2"></div>
+        <div className="col-md-5 col-sm-6">
+            <p className="title date-text">DATE: {this.state.date}</p>
+            <button className="btn-convert" onClick={this.convertHandler}>CONVERT</button>
         </div>
     </div>
     <div>
