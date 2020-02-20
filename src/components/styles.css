@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 html{
-    position:relative; 
+    position:relative;
+    height: 100%; 
   }
 
 body {
@@ -12,6 +13,13 @@ body {
     margin:0;
     padding:0;
     text-align: center;
+    padding-bottom:100px;
+    height: 100%;
+}
+
+.currency-app {
+
+    padding-bottom:100px;
 }
 
 /* navbar */
@@ -92,6 +100,18 @@ body {
 
 /* footer */
 
+.footer-copyright {
+    position:absolute;
+   bottom:0;
+   width:100%;
+}
+
+.icon {
+    margin-right: 10px;
+    color: #fff;
+}
+
+/* media screen values */
   @media only screen and (max-width: 480px) {
     .container-content {
         width: 90%;  

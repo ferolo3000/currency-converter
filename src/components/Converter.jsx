@@ -57,6 +57,11 @@ selectHandler = (event) => {
     }
 }
 
+handleChange = () => {
+    this.setState({fromCurrency:this.state.toCurrency})
+    this.setState({toCurrency:this.state.fromCurrency})
+  }
+
 render() {
   return ( 
   <div className="container-content">
@@ -74,7 +79,7 @@ render() {
             </select>
         </div>
         <div className="col-md-2 col-sm-12 switch">
-            <button className="switch-btn">&#8249; &#8250;</button>
+            <button className="switch-btn" onClick={this.handleChange}>&#8249; &#8250;</button>
         </div>
         <div className="col-md-5 col-sm-12">            
             <p className="title">TO</p>                   

@@ -1,4 +1,5 @@
 import React from "react";
+//import { Link } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { fab } from '@fortawesome/free-brands-svg-icons' 
@@ -9,10 +10,10 @@ function Footer() {
   const currentYear = new Date().getFullYear();
   return (
     <footer className="footer text-white">
-      <div className="text-center">
-        <FontAwesomeIcon icon={['fab', 'github']} size="2x" />
-        <FontAwesomeIcon icon={['fab', 'linkedin']} size="2x" />
-        <p>Copyright ⓒ {currentYear}</p>
+      <div className="footer-copyright text-center">
+        <a href="https://github.com/ferolo3000" rel="noopener noreferrer" target="_blank"><FontAwesomeIcon icon={['fab', 'github']} size="1.5x" className="icon" /></a> 
+        <a href="https://www.linkedin.com/in/fernandaromerolo/?locale=en_US" rel="noopener noreferrer" target="_blank"><FontAwesomeIcon icon={['fab', 'linkedin']} size="1.5x" className="icon" /></a>
+        <p className="copyright-text">Copyright ⓒ {currentYear}</p>
       </div>
     </footer>
 
