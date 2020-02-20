@@ -4,10 +4,12 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
+    <React.Fragment>
     <div className="currency-app">
       <Header />
       <Footer />
     </div>
+    </React.Fragment>
   );
 }
 

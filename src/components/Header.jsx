@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import Home from "./Home"
-import About from "./About";
+import Converter from "./Converter"
+import Stats from "./Stats";
 
 
 const NotFound = () => {
@@ -13,11 +13,11 @@ function Header() {
         <Router>
         <nav className="navbar navbar-expand-lg navbar-light bg-grey">
             <Link className="navbar-brand" to="/">CONVERTIR</Link>
-            <Link to="/about/" className="text-white">About</Link>
+            <Link to="/stats/" className="text-white">Statistics</Link>
         </nav>
         <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/about/" component={About} />
+        <Route path="/" exact component={Converter} />
+        <Route path="/stats/" component={Stats} />
         <Route component={NotFound} />
       </Switch>
 
