@@ -75,6 +75,7 @@ body {
 
 .date-text {
     color:#40BAA6;
+    font-size: 15px;
 }
 
 .input-amount {
@@ -96,7 +97,31 @@ body {
 
 .result {
     color:#40BAA6;
+    font-size: 30px;
 }
+
+.table-result {
+    font-size: 15px;
+    color: #fff;
+    margin-top: 20px;
+}
+
+/* table */
+.table-coins {
+    text-align: center;
+    width: 500px;
+    background-color: transparent;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .table th {
+      border-top: 1px solid #dee2e6;
+  }
+
+  .table-title, .table-text {
+    color: #fff;
+  }
 
 /* footer */
 .footer-copyright {
@@ -110,7 +135,7 @@ body {
 
   /* stats */
 
-  .stats {
+  .stats, .top-title {
     color: #fff;
 }
 

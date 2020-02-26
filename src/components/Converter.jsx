@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Table from "./Table"
 
 import "./styles.css"
 
@@ -11,19 +12,26 @@ class Converter extends React.Component {
             fromCurrency: "USD",
             toCurrency: "EUR",
             amount: 1,
-            currencies: [],
+            coinsTable: [],
+            coinsList: [],
             date:"",
         }
   };
 
   componentDidMount() {
+    //this.getListData();
+    this.getCurrencies();
+
+  }
+
+  getCurrencies = () => {
     axios.get("https://alt-exchange-rate.herokuapp.com/latest")
     .then(response => {
       const initCurrency = ["EUR"]
       for (const key in response.data.rates) {
         initCurrency.push(key)
       }
-      this.setState({currencies: initCurrency.sort()})
+      this.setState({coinsList: initCurrency.sort()})
       this.setState({date: response.data.date})
     })
 
@@ -38,11 +46,12 @@ class Converter extends React.Component {
         axios.get(`https://alt-exchange-rate.herokuapp.com/latest?base=${this.state.fromCurrency}&symbols=${this.state.toCurrency}`)
             .then(response => {
                 const result = this.state.amount * (response.data.rates[this.state.toCurrency]);
-                this.setState({ result: result.toFixed(5) })
+                this.setState({ result: result.toFixed(3) })
             })
             .catch(err => {
                 console.log("There is an error with convertHandler(), please check: ", err.message);
             });
+            this.getListData();
     } else {
         this.setState({ result: "You can't convert the same currency!" })
     }
@@ -62,8 +71,27 @@ handleChange = () => {
     this.setState({toCurrency:this.state.fromCurrency})
   }
 
+  getListData = () => {
+    if (this.state.fromCurrency !== this.state.toCurrency) {
+    axios.get(`https://alt-exchange-rate.herokuapp.com/latest?base=${this.state.fromCurrency}`)
+      .then(response => {
+        const currList = ["EUR"];
+        for (const key in response.data.rates) {
+            currList.push({ label: key, value: (response.data.rates[key] * this.state.amount).toFixed(3) });
+        }
+        this.setState({
+            coinsTable: currList.sort()
+        });
+      })
+    }
+  }
+
+
 render() {
-  return ( 
+  return (
+      <React.Fragment> 
+<div>
+    <h2 className="top-title">Currency Converter</h2>
   <div className="container-content">
     <div className="row">
         <div className="col-md-5 col-sm-12">
@@ -73,7 +101,7 @@ render() {
                 name="from"
                 onChange={(event) => this.selectHandler(event)}
                 value={this.state.fromCurrency}>
-                {this.state.currencies.map(currency => (
+                {this.state.coinsList.map(currency => (
                     <option key={currency}>{currency}</option>
                 ))}
             </select>
@@ -88,7 +116,7 @@ render() {
                 name="to"
                 onChange={(event) => this.selectHandler(event)}
                 value={this.state.toCurrency}>
-                {this.state.currencies.map(currency => (
+                {this.state.coinsList.map(currency => (
                     <option key={currency}>{currency}</option>
                 ))}
             </select>
@@ -113,13 +141,18 @@ render() {
             <button className="btn-convert" onClick={this.convertHandler}>CONVERT</button>
         </div>
     </div>
-    <div>
-        {this.state.result && 
-            <p className="result"><span style={{fontSize: "20px"}}>{this.state.amount} {this.state.fromCurrency} =</span><br/>
-                <span style={{fontSize: "40px"}}>{this.state.result}</span> <span style={{fontSize: "20px"}}>{this.state.toCurrency}</span></p>
+        <div>
+            {this.state.result && 
+                <p className="result">{this.state.amount} {this.state.fromCurrency} = {this.state.result} {this.state.toCurrency}</p>
             }
-    </div>        
+        </div>        
+    </div>
+</div>
+        <div>
+            <p className="table-result">In other currencies {this.state.amount} {this.state.fromCurrency} is equals to: </p>
         </div>
+        <Table coinsTable={this.state.coinsTable} />
+        </React.Fragment>
      )   
     }
 }
