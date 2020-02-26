@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
+import Chart from 'chart.js';
 import Table from "./Table"
+
 
 import "./styles.css"
 
@@ -15,7 +17,8 @@ class Converter extends React.Component {
             coinsTable: [],
             coinsList: [],
             date:"",
-        }
+        };
+        this.chartRef = React.createRef();
   };
 
   componentDidMount() {
@@ -52,6 +55,7 @@ class Converter extends React.Component {
                 console.log("There is an error with convertHandler(), please check: ", err.message);
             });
             this.getListData();
+            this.getChartsData();
     } else {
         this.setState({ result: "You can't convert the same currency!" })
     }
@@ -84,6 +88,53 @@ handleChange = () => {
         });
       })
     }
+  }
+
+  getChartsData = () => {
+    const endDate = new Date().toISOString().split('T')[0];
+    const startDate = new Date((new Date()).getTime() - (30 * 24 * 60 * 60 * 1000)).toISOString().split('T')[0];
+    if (this.state.fromCurrency !== this.state.toCurrency) {
+        axios
+      .get(`https://alt-exchange-rate.herokuapp.com/history?start_at=${startDate}&end_at=${endDate}&base=${this.state.fromCurrency}&symbols=${this.state.toCurrency}`)
+      .then(response => {
+        const chartLabels = Object.keys(response.data.rates);
+        const chartData = Object.values(response.data.rates).map(rate => rate[this.state.toCurrency]);
+        const chartLabel = `${this.state.fromCurrency}/${this.state.toCurrency}`;
+        this.buildChart(chartLabels, chartData, chartLabel);
+      })
+      .catch(err => {
+        console.log(
+          "There is an error with componentDidMount(), please check: ",
+          err.message
+        );
+      });
+    }
+  }
+
+  buildChart = (labels, data, label) => {
+    const chartRef = this.chartRef.current.getContext("2d");
+
+    if (typeof this.chart !== "undefined") {
+      this.chart.destroy();
+    }
+
+    this.chart = new Chart(this.chartRef.current.getContext("2d"), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [
+          {
+            label: label,
+            data,
+            fill: false,
+            tension: 0,
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+      }
+    })
   }
 
 

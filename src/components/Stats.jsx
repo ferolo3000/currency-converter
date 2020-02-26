@@ -1,7 +1,17 @@
 import React from "react";
 
-function Stats() {
-    return <h1 className="stats">Some stats will go here</h1>
+import "./styles.css"
+
+class Stats extends React.Component {
+
+  render() {
+    return (
+        <React.Fragment>
+        <h1>This is a title</h1>
+        <canvas ref={this.props.chartRef} />
+        </React.Fragment>
+    );
+  }
 }
 
 export default Stats;
