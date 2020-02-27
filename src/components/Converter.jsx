@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import Chart from 'chart.js';
 import Table from "./Table"
 
 
@@ -18,13 +17,10 @@ class Converter extends React.Component {
             coinsList: [],
             date:"",
         };
-        this.chartRef = React.createRef();
   };
 
   componentDidMount() {
-    //this.getListData();
     this.getCurrencies();
-
   }
 
   getCurrencies = () => {
@@ -55,7 +51,6 @@ class Converter extends React.Component {
                 console.log("There is an error with convertHandler(), please check: ", err.message);
             });
             this.getListData();
-            this.getChartsData();
     } else {
         this.setState({ result: "You can't convert the same currency!" })
     }
@@ -90,59 +85,11 @@ handleChange = () => {
     }
   }
 
-  getChartsData = () => {
-    const endDate = new Date().toISOString().split('T')[0];
-    const startDate = new Date((new Date()).getTime() - (30 * 24 * 60 * 60 * 1000)).toISOString().split('T')[0];
-    if (this.state.fromCurrency !== this.state.toCurrency) {
-        axios
-      .get(`https://alt-exchange-rate.herokuapp.com/history?start_at=${startDate}&end_at=${endDate}&base=${this.state.fromCurrency}&symbols=${this.state.toCurrency}`)
-      .then(response => {
-        const chartLabels = Object.keys(response.data.rates);
-        const chartData = Object.values(response.data.rates).map(rate => rate[this.state.toCurrency]);
-        const chartLabel = `${this.state.fromCurrency}/${this.state.toCurrency}`;
-        this.buildChart(chartLabels, chartData, chartLabel);
-      })
-      .catch(err => {
-        console.log(
-          "There is an error with componentDidMount(), please check: ",
-          err.message
-        );
-      });
-    }
-  }
-
-  buildChart = (labels, data, label) => {
-    const chartRef = this.chartRef.current.getContext("2d");
-
-    if (typeof this.chart !== "undefined") {
-      this.chart.destroy();
-    }
-
-    this.chart = new Chart(this.chartRef.current.getContext("2d"), {
-      type: 'line',
-      data: {
-        labels,
-        datasets: [
-          {
-            label: label,
-            data,
-            fill: false,
-            tension: 0,
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-      }
-    })
-  }
-
-
 render() {
   return (
       <React.Fragment> 
 <div>
-    <h2 className="top-title">Currency Converter</h2>
+  <h2 className="top-title">Currency Converter</h2>
   <div className="container-content">
     <div className="row">
         <div className="col-md-5 col-sm-12">
@@ -203,6 +150,9 @@ render() {
             <p className="table-result">In other currencies {this.state.amount} {this.state.fromCurrency} is equals to: </p>
         </div>
         <Table coinsTable={this.state.coinsTable} />
+        <div className="chart-container">
+          <canvas ref={this.chartRef} />
+        </div>
         </React.Fragment>
      )   
     }
