@@ -8,11 +8,9 @@ class Stats extends React.Component {
   constructor(props) {
     super(props);
         this.state = {
-            result: null,
             fromCurrency: "USD",
             toCurrency: "EUR",
             coinsList: [],
-            date:"",
         };
 
         this.chartRef = React.createRef();
