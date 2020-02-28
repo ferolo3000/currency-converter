@@ -6,6 +6,7 @@ class Table extends React.Component {
 
   render() {
     return (
+      <div className="table-responsive">
       <table className="table table-coins table-striped table-hover">
         <thead>
           <tr>
@@ -24,6 +25,7 @@ class Table extends React.Component {
           })}
         </tbody>
       </table>
+      </div>
     );
   }
 }

@@ -40,14 +40,14 @@ class Stats extends React.Component {
 
   selectHandler = (event) => {
     if (event.target.name === "from") {
-        this.setState({ fromCurrency: event.target.value })
+        this.setState({ fromCurrency: event.target.value }, () => {
+          this.getChartsData();
+        })
+    } else if (event.target.name === "to") {
+      this.setState({ toCurrency: event.target.value }, () => {
         this.getChartsData();
+      })
     }
-    if (event.target.name === "to") {
-      this.setState({ toCurrency: event.target.value })
-      this.getChartsData();
-  }
-    this.getChartsData();
 }
 
 
@@ -157,7 +157,7 @@ class Stats extends React.Component {
         </div>
       </div>  
         <div className="chart-container">
-          <canvas className="chart-coins" ref={this.chartRef} />
+          <canvas id="canvas" className="chart-coins" ref={this.chartRef} />
         </div>
       </React.Fragment>
     )

@@ -145,7 +145,11 @@ body {
     width: 60vw;
     height: 30vw;
     margin-bottom: 20px;
-  } 
+  }
+  
+  #canvas {
+      width: 100%;
+  }
 
 
 /* media screen values */
@@ -153,11 +157,18 @@ body {
     .container-content {
         width: 90%;  
     }
+    .table-coins {
+        width: 80%;
+    }
     .chart-container {
-        width: 70vw;
-        height: 50vw;
-        margin-bottom: 10px;
-      } 
+        width: 80vw;
+        height: 70vw;
+      }
+    #canvas {
+        width: 100%;
+        height: 200px;
+    }
+
 
   }
 
@@ -166,10 +177,16 @@ body {
         width: 80%;  
     }
     .chart-container {
-        width: 70vw;
-        height: 50vw;
-        margin-bottom: 10px;
+        width: 80vw;
+        height: 70vw;
       }
+    #canvas {
+        width: 100%;
+        height: 200px;
+    }
+    .table-coins {
+        width: 80%;
+    }
 
   }
 
@@ -177,9 +194,16 @@ body {
     .container-content {
         width: 70%;  
     }
+    .table-coins {
+        width: 80%;
+    }
     .chart-container {
-        width: 70vw;
-        height: 50vw;
-        margin-bottom: 10px;
+        width: 80vw;
+        height: 70vw;
       }
+    #canvas {
+        width: 100%;
+        height: 200px;
+    }
+
   }

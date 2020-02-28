@@ -150,9 +150,6 @@ render() {
             <p className="table-result">In other currencies {this.state.amount} {this.state.fromCurrency} is equals to: </p>
         </div>
         <Table coinsTable={this.state.coinsTable} />
-        <div className="chart-container">
-          <canvas ref={this.chartRef} />
-        </div>
         </React.Fragment>
      )   
     }
