@@ -13,13 +13,13 @@ body {
     margin:0;
     padding:0;
     text-align: center;
-    padding-bottom:100px;
     height: 100%;
 }
 
 .currency-app {
-
-    padding-bottom:100px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* navbar */
@@ -75,6 +75,7 @@ body {
 
 .date-text {
     color:#40BAA6;
+    font-size: 15px;
 }
 
 .input-amount {
@@ -96,14 +97,35 @@ body {
 
 .result {
     color:#40BAA6;
+    font-size: 30px;
 }
 
-/* footer */
+.table-result {
+    font-size: 15px;
+    color: #fff;
+    margin-top: 20px;
+}
 
+/* table */
+.table-coins {
+    text-align: center;
+    width: 500px;
+    background-color: transparent;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .table th {
+      border-top: 1px solid #dee2e6;
+  }
+
+  .table-title, .table-text {
+    color: #fff;
+  }
+
+/* footer */
 .footer-copyright {
-    position:absolute;
-   bottom:0;
-   width:100%;
+    padding: 50px 0;
 }
 
 .icon {
@@ -111,28 +133,77 @@ body {
     color: #fff;
 }
 
+  /* stats */
+
+  .stats, .top-title {
+    color: #fff;
+}
+
+.chart-container {
+    position: relative;
+    margin: auto;
+    width: 60vw;
+    height: 30vw;
+    margin-bottom: 20px;
+  }
+  
+  #canvas {
+      width: 100%;
+  }
+
+
 /* media screen values */
   @media only screen and (max-width: 480px) {
     .container-content {
         width: 90%;  
     }
+    .table-coins {
+        width: 80%;
+    }
+    .chart-container {
+        width: 80vw;
+        height: 70vw;
+      }
+    #canvas {
+        width: 100%;
+        height: 200px;
+    }
+
+
   }
 
   @media only screen and (max-width: 768px) {
     .container-content {
         width: 80%;  
     }
+    .chart-container {
+        width: 80vw;
+        height: 70vw;
+      }
+    #canvas {
+        width: 100%;
+        height: 200px;
+    }
+    .table-coins {
+        width: 80%;
+    }
+
   }
 
   @media only screen and (max-width: 1024px) {
     .container-content {
         width: 70%;  
     }
+    .table-coins {
+        width: 80%;
+    }
+    .chart-container {
+        width: 80vw;
+        height: 70vw;
+      }
+    #canvas {
+        width: 100%;
+        height: 200px;
+    }
+
   }
-
-  /* stats */
-
-  .stats {
-      color: #fff;
-  }
-
